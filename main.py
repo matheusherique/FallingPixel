@@ -1,4 +1,8 @@
+from FGAme import *
 import random
+
+world.add.margin(-200, 0)
+world.gravity = (0, -1000)
 
 TITLE = 'Falling Pixel'
 WIDTH = 400
@@ -11,10 +15,12 @@ WIDTH_RANGE = (0, 400)
 HEIGHT_RANGE = (400, 700)
 RANGE = (3,7)
 
-pixel = Actor('awesomeface', pos=(WIDTH / 2, 100))
-pixel.vy = 0
-pixel.vx  = 0
-pixel.dead = False
+p1 = world.add.circle(20, pos=(400, 300), color='red', mass='inf')
+
+@listen('long-press', 'right', dx=5)
+@listen('long-press', 'left', dx=-5)
+def move_p1_dx(dx):
+    p1.move(dx, 0)
 
 attacker1 = Actor('ghost', pos=(random.randint(*WIDTH_RANGE), 700))
 attacker1.vy = random.randint(*RANGE)
@@ -82,3 +88,5 @@ def draw():
     attacker2.draw()
     attacker3.draw()
     pixel.draw()
+
+run()
