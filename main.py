@@ -2,12 +2,12 @@ from FGAme import *
 import random
 
 world.add.margin(-200, 0)
-world.gravity = (0, -1000)
+world.gravity = (0, -500)
+# world.background = 'backgroud'
 
 TITLE = 'Falling Pixel'
 WIDTH = 400
 HEIGHT = 708
-GRAVITY = 500
 JUMPSPEED = 200
 SPEED = 4
 GAP = 10
@@ -15,10 +15,10 @@ WIDTH_RANGE = (0, 400)
 HEIGHT_RANGE = (400, 700)
 RANGE = (3,7)
 
-p1 = world.add.circle(20, pos=(400, 300), color='red', mass='inf')
+p1 = world.add.circle(20, pos=(400, 300), color='red', mass='10')
 
-@listen('long-press', 'right', dx=5)
-@listen('long-press', 'left', dx=-5)
+@listen('long-press', 'right', dx=20)
+@listen('long-press', 'left', dx=-20)
 def move_p1_dx(dx):
     p1.move(dx, 0)
 
